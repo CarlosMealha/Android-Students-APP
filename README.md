@@ -1,4 +1,4 @@
-# Project_Vision_Template
+# Project_Vision
 Our project aims to improve the daily lifes of all FEUP Students by updating the schedule to be more flexible to the needs of any specific individual.
 
 Unlike Sigarra the schedule could be updated to add/remove classes or events depending on the student necessities.
