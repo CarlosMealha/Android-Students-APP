@@ -1,6 +1,21 @@
-# Project_Vision
-Our project aims to improve the daily lifes of all FEUP Students by updating the schedule to be more flexible to the needs of any specific individual.
+_[Schedule V2]_ Development Report
 
-Unlike Sigarra the schedule could be updated to add/remove classes or events depending on the student necessities.
+Welcome to the documentation pages of the _[Schedule V2]_!
 
-This would make students with conflicting theoretical classes able to organize their schedule so that they don't have to be forced to miss a class, students that don't need/want to go to some classes able to hide them and students that have some extracurricular activities able to incorporate them into their schedule.
+You can find here detailed about the product (or mini-app or module), from a high-level vision to low-level implementation decisions, a kind of Software Development Report, organized by discipline (as of RUP): 
+
+* Business modeling 
+  * [Product Vision](https://github.com/LEIC-ES-2021-22/templates/blob/main/docs/ProductVision.md)
+  * [Elevator Pitch]
+* [Requirements](https://github.com/LEIC-ES-2021-22/templates/blob/main/docs/requirements.md)
+  * [Use Case Model](https://github.com/LEIC-ES-2021-22/templates/blob/main/docs/requirements.md#Use-case-model)
+  * [User stories](https://github.com/LEIC-ES-2021-22/templates/blob/main/docs/requirements.md#User-stories)
+  * [Domain model](https://github.com/LEIC-ES-2021-22/templates/blob/main/docs/requirements.md#Domain-model)
+* [Architecture and Design]
+  * [Logical architecture]
+  * [Physical architecture]
+  * [Prototype]
+* [Implementation]
+* [Test]
+* [Configuration and change management]
+* [Project management]
