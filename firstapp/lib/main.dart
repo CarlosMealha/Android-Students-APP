@@ -1,9 +1,5 @@
-import 'package:firstapp/EscolherTurma.dart';
 import 'package:firstapp/PopUpDialog.dart';
 import 'package:flutter/material.dart';
-
-import 'EscolherCadeira.dart';
-import "EscolherTurma.dart";
 
 void main() => runApp(const MyApp());
 
