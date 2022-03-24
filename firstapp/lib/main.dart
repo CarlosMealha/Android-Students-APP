@@ -13,10 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
-          appBar: AppBar(title: const Text(_title)),
           body: Center(
-            child: PopUpDialogWidgetWidget(),
-          )),
+        child: PopUpDialogWidgetWidget(),
+      )),
     );
   }
 }
