@@ -17,59 +17,56 @@ Example:
 
 
 
-### Use cases
+### Use cases  
 
-|  Name 	|   Add event to calendar	|
-|---	|---	|
-|   Actor	|   Student	|
-|   Description	|   The student adds an event to the exising calendar	|
-|   Preconditions	|   Student has access to the *uni* app	|
-|   Postconditions	|   Student can now see the event in the calendar	|
-|   Normal flow	|   	|
-|   Alternative flow  |   	|
-
+| Name | Add event to calendar |
+|--- |--- |
+| Actor | Student |
+| Description | The student adds an event to the exising calendar |
+| Preconditions | Student has access to the *uni* app |
+| Postconditions | Student can now see the event in the calendar |
+| Normal flow |  |
+| Alternative flow | |
 <br/>
 
-|  Name 	|   Remove event from calendar	|
-|---	|---	|
-|   Actor	|   Student	|
-|   Description	|   The student removes an existing event to the calendar	|
-|   Preconditions	|  - Student has access to the *uni* app	<br/> -A removable event exists in the students' calendar|
-|   Postconditions	|   Student can now see the event in the calendar	|
-|   Normal flow	|   	|
-|   Alternative flow  |   	|
-
+| Name | Remove event from calendar |
+|--- |--- |
+| Actor | Student |
+| Description | The student removes an existing event to the calendar|
+| Preconditions | - Student has access to the *uni* app <br/> - A removable event exists in the students' calendar|
+| Postconditions | Student can no longer see the event in the calendar |
+| Normal flow | |
+| Alternative flow | |
 <br/>
 
-|  Name 	|   Edit event from calendar	|
-|---	|---	|
-|   Actor	|   Student	|
-|   Description	|   The student adds an event to the exising calendar	|
-|   Preconditions	|   Student has access to the *uni* app	|
-|   Postconditions	|   Student can now see the event in the calendar	|
-|   Normal flow	|   	|
-|   Alternative flow  |   	|
+| Name | Edit event from calendar |
+|--- |--- |
+| Actor | Student |
+| Description | The student edits an event to the exising calendar |
+| Preconditions | - Student has access to the *uni* app <br/> - An editable event exists in the students' calendar|
+| Postconditions | Student can now see the edited event in the calendar |
+| Normal flow | |
+| Alternative flow | |
 <br/>
 
-|  Name 	|   Export calendar to csv	|
-|---	|---	|
-|   Actor	|   Student	|
-|   Description	|   The student adds an event to the exising calendar	|
-|   Preconditions	|   Student has access to the *uni* app	|
-|   Postconditions	|   Student can now see the event in the calendar	|
-|   Normal flow	|   	|
-|   Alternative flow  |   	|
-
+| Name | Export calendar to .csv |
+|--- |--- |
+| Actor | Student |
+| Description | The student exports the *uni* calendar to a .csv file |
+| Preconditions | Student has access to the *uni* app |
+| Postconditions | Student has access to the calendar in a .csv file |
+| Normal flow | |
+| Alternative flow | |
 <br/>
 
-|  Name 	|   Import csv to calendar	|
-|---	|---	|
-|   Actor	|   Student	|
-|   Description	|   The student adds an event to the exising calendar	|
-|   Preconditions	|   Student has access to the *uni* app	|
-|   Postconditions	|   Student can now see the event in the calendar	|
-|   Normal flow	|   	|
-|   Alternative flow  |   	|
+| Name | Import .csv to calendar |
+|--- |--- |
+| Actor | Student |
+| Description | The student imports a .csv file to the *uni* calendar|
+| Preconditions | - Student has access to the *uni* app <br/> - Student has a .csv file in the accepted scheme|
+| Postconditions | Student can now see the events from the .csv in the calendar |
+| Normal flow | |
+| Alternative flow | |
 
 ### User stories
 The user stories should be created as GitHub issues. Therefore, this section will *not* exist in your report, it is here only to explain how you should describe the requirements of the product as **user stories**. 
