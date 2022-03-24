@@ -1,4 +1,4 @@
-import 'package:firstapp/PopUpDialog.dart';
+import 'package:firstapp/UI/PopUpDialog.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());

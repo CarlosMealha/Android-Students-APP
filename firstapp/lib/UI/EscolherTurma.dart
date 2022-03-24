@@ -1,15 +1,15 @@
+import 'package:firstapp/Data/Turma.dart';
 import 'package:flutter/material.dart';
-import "package:firstapp/EscolherCadeira.dart";
 
-class EscolherCadeiraWidget extends StatefulWidget {
-  const EscolherCadeiraWidget({Key? key}) : super(key: key);
+class EscolherTurmaWidget extends StatefulWidget {
+  const EscolherTurmaWidget({Key? key}) : super(key: key);
 
   @override
-  State<EscolherCadeiraWidget> createState() => _EscolherCadeiraWidgetState();
+  State<EscolherTurmaWidget> createState() => _EscolherTurmaWidgetState();
 }
 
-class _EscolherCadeiraWidgetState extends State<EscolherCadeiraWidget> {
-  String dropdownValue = 'ES';
+class _EscolherTurmaWidgetState extends State<EscolherTurmaWidget> {
+  String dropdownValue = '02LEIC01';
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,7 @@ class _EscolherCadeiraWidgetState extends State<EscolherCadeiraWidget> {
           dropdownValue = newValue!;
         });
       },
-      items: <String>['ES', 'DA', 'LTW', 'LC']
-          .map<DropdownMenuItem<String>>((String value) {
+      items: getTurmas().map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),

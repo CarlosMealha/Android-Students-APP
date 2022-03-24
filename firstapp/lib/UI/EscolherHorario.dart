@@ -1,5 +1,7 @@
+import 'package:firstapp/Data/Horario.dart';
 import 'package:flutter/material.dart';
-import "package:firstapp/EscolherCadeira.dart";
+import "package:firstapp/UI/EscolherCadeira.dart";
+import "package:firstapp/Data/Horario.dart";
 
 class EscolherHorarioWidget extends StatefulWidget {
   const EscolherHorarioWidget({Key? key}) : super(key: key);
@@ -27,8 +29,7 @@ class _EscolherHorarioWidgetState extends State<EscolherHorarioWidget> {
           dropdownValue = newValue!;
         });
       },
-      items: <String>['14:00', '14:30', '15:00', '15:30', '16:00']
-          .map<DropdownMenuItem<String>>((String value) {
+      items: getHorario().map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
