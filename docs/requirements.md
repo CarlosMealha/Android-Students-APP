@@ -6,13 +6,8 @@ In this section, you should describe all kinds of requirements for your module: 
 
 ### Use case model 
 
-Create a use-case diagram in UML with all high-level use cases possibly addressed by your module, to clarify the context and boundaries of your application.
-
-Give each use case a concise, results-oriented name. Use cases should reflect the tasks the user needs to be able to accomplish using the system. Include an action verb and a noun. 
-
-Example:
  <p align="center" justify="center">
-  <img src="https://github.com/LEIC-ES-2021-22/templates/blob/main/images/UseCaseView.png"/>
+  <img src="../img/UseCases.png"/>
 </p>
 
 
