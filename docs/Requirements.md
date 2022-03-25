@@ -21,7 +21,7 @@ In this section, you should describe all kinds of requirements for your module: 
 | Preconditions | Student has access to the *uni* app. |
 | Postconditions | Student can now see the event in the calendar. |
 | Normal flow | 1. Student access the schedule page of Uni app.<br/> 2. Student presses the edit button.<br/>3. It opens a pop up window.<br/> 4. Student selects the add function.<br/>5. Student selects between UC or extracurricular. <br/> 6. If the Student selects UC, there is a drop-down box, that allows the Student to select the course name, the classroom, and the time of the class. <br/>|
-| Alternative flow | 1.[Extracurricular] if in step 5, the Student selects extracurrilar, there is a drop-down box, that allows the Student, write the extracurrilar name, the time, the place, and an adding friend button (to invite the Student_Friend to the extracurricular). <br/> 2. The Student_Friend will receive a notification with the request to attend the extracurricular event.<br/> 3. There will be a circle in the Student schedule indicating if the Student_Friend accepter the request (green accepted, red declined, yellow still waiting the answer). |
+| Alternative flow | 1.[Extracurricular] if in step 5, the Student selects extracurrilar, there is a drop-down box, that allows the Student, write the extracurrilar name, the time, the place, and an adding friend button (to invite the Student_Friend to the extracurricular). <br/> 2. The Student_Friend will receive a notification with the request to attend the extracurricular event.<br/> 3. There will be a circle in the Student schedule indicating if the Student_Friend accepted the request (green accepted, red declined, yellow still waiting the answer). |
 <br/>
 
 | Name | Remove event from calendar |
