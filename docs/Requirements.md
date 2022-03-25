@@ -14,53 +14,53 @@ In this section, you should describe all kinds of requirements for your module: 
 
 ### Use cases  
 
-| Name | Add event to calendar |
+| Name | Add an event to the calendar |
 |--- |--- |
 | Actor | Student |
-| Description | The Student adds an event to the existing calendar. |
-| Preconditions | Student has access to the *uni* app. |
-| Postconditions | Student can now see the event in the calendar. |
-| Normal flow | 1. Student access the schedule page of Uni app.<br/> 2. Student presses the edit button.<br/>3. It opens a pop up window.<br/> 4. Student selects the add function.<br/>5. Student selects between UC or "extracurricular". <br/> 6. If the Student selects UC, there is a drop-down box, that allows the Student to choose the course name, the classroom, and the time of the class. <br/>|
-| Alternative flow | 1.["Extracurricular"] if in step 5 the Student selects "extracurricular", there is a drop-down box, that allows the Student to add it. Writing the corresponding name, the time, the place, and an adding friend button (to invite the Student_Friend to the "extracurricular"). <br/> 2. The Student_Friend will receive a notification with the request to attend the "extracurricular" event.<br/> 3. There will be a circle in the Student schedule indicating if the Student_Friend accepted the request (green accepted, red declined, yellow still waiting the answer). |
+| Description | The Student adds an event to an  existing calendar. |
+| Preconditions | The Student has access to the *uni* app. |
+| Postconditions | The Student can now see the event on the calendar. |
+| Normal flow | 1. The Student accesses his's schedule page on the *uni* app.<br/> 2. The Student presses the edit button.<br/>3. A pop-up window opens up.<br/> 4. The Student selects the add function.<br/>5. The Student selects between an UC or an extracurricular activity. <br/> 6. If the Student selects an UC, there is a drop-down box, that allows the Student to choose the course’s name, the classroom, and the time of the class. <br/>|
+| Alternative flow | 1. [Extracurricular] If in step 5 the Student selects "extracurricular", there is a drop-down box to add it. Writing the corresponding name, the time, the place and an optional adding friend button (to invite the Student_Friend to the extracurricular activity). <br/> 2. The Student_Friend will receive a notification with the request to attend the extracurricular activity.<br/> 3. There will be a circle in the Student’s schedule, indicating if the Student_Friend accepted the request (green accepted, red declined, yellow still waiting for an answer). |
 <br/>
 
-| Name | Remove event from calendar |
+| Name | Remove an event from the calendar |
 |--- |--- |
 | Actor | Student |
-| Description | The Student removes an existing event to the calendar.|
-| Preconditions | - Student has access to the *uni* app. <br/> - A removable event exists in the students' calendar.|
-| Postconditions | Student can no longer see the event in the calendar. |
-| Normal flow | 1. Student access the schedule page of Uni app. <br/>2. Student presses the edit button.<br/>3. It opens a pop up window. <br/>4. Student selects the remove function.<br/>5. Student will choose the event type, name and day of the week, that he wants to remove.<br/>6. After that, the Student can press the button to submit the changes, and it will immediately disappear from the schedule page.|
+| Description | The Student removes an existing event from the calendar.|
+| Preconditions | - The Student has access to the *uni* app. <br/> - A removable event exists in the students' calendar.|
+| Postconditions | The Student can no longer see the event in the calendar. |
+| Normal flow | 1. The Student accesses his's schedule page on the *uni* app. <br/>2. The Student presses the edit button.<br/>3. It opens a pop-up window. <br/>4. The Student selects the remove function.<br/>5. The Student will choose the event type, name and day of the week, that he wants to remove.<br/>6. The Student can press the button to submit the changes, and the event will immediately disappear from his’s schedule page.|
 <br/>
 
-| Name | Edit event from calendar |
+| Name | Edit an event on the calendar |
 |--- |--- |
 | Actor | Student |
-| Description | The Student edits an event to the exising calendar. |
-| Preconditions | - Student has access to the *uni* app. <br/> - An editable event exists in the students' calendar.|
-| Postconditions | Student can now see the edited event in the calendar. |
-| Normal flow | 1. Student access the schedule page of Uni app.<br/> 2. Student can hold the event from the schedule that he wants to edit. <br/> 3. The event will zoom and then he can make the changes that he wants (name, type, time, and day).|
-| Alternative flow | 1. [Remove and add] Student can just remove and add a new event, in the same way that was explained before.  |
+| Description | The Student edits an event from an existing calendar. |
+| Preconditions | - The Student has access to the *uni* app. <br/> - An editable event exists in the students' calendar.|
+| Postconditions | The Student can now see the edited event in the calendar. |
+| Normal flow | 1. The Student accesses his’s schedule page on the *uni* app.<br/> 2. The Student taps and holds the event from the schedule that he wants to edit. <br/> 3. The event will zoom and then he can make the changes that he wants (name, type, time, and day).|
+| Alternative flow | 1. [Remove and add] The Student can remove and add an event, in the same way that was explained before.  |
 <br/>
 
-| Name | Export calendar to .csv |
+| Name | Export calendar to a .csv file |
 |--- |--- |
 | Actor | Student |
 | Description | The Student exports the *uni* calendar to a .csv file. |
-| Preconditions | Student has access to the *uni* app. |
-| Postconditions | Student has access to the calendar in a .csv file. |
-| Normal flow | 1. Student access the schedule page of Uni app.<br/>  2. Student can press the button to export the schedule file.<br/> 3. It will open a window where the Student can choose where to register the .csv schedule file.|
+| Preconditions | The Student has access to the *uni* app. |
+| Postconditions | The Student has access to the calendar in a .csv file. |
+| Normal flow | 1. The Student accesses his’s schedule page on the *uni* app.<br/>  2. The Student can press the button to export the schedule into a .csv file.<br/> 3. It will open a window where the Student can choose where to export the .csv file.|
 <br/>
 
-| Name | Import .csv to calendar |
+| Name | Import a .csv file onto the  calendar |
 |--- |--- |
 | Actor | Student |
 | Description | The Student imports a .csv file to the *uni* calendar.|
-| Preconditions | - Student has access to the *uni* app <br/> - Student has a .csv file in the accepted scheme.|
-| Postconditions | Student can now see the events from the .csv in the calendar.|
-| Normal flow | 1. Student access the schedule page of Uni app.<br/> 2. Student can press an import .csv button, that access the file browser of the Student, so he can choose the file to import. |
-| Alternative flow |  1. [Invalid file] if the file type is invalid or unformatted, it will appear a error message indicatin the error type.|
-
+| Preconditions | - The Student has access to the *uni* app <br/> - The Student has a .csv file in a compatible format scheme.|
+| Postconditions | The Student can now see the events from the .csv file on his's calendar.|
+| Normal flow | 1. The Student accesses his’s schedule page on the *uni* app.<br/> 2. The Student can press the import .csv button, that opens the file browser of the Student’s device, so he can choose the file to import. |
+| Alternative flow |  1. [Invalid file] If the file type is invalid or unformatted, an error message will appear, indicating the error type.|
+<br/>
 ### User stories
 The user stories should be created as GitHub issues. Therefore, this section will *not* exist in your report, it is here only to explain how you should describe the requirements of the product as **user stories**. 
 
