@@ -60,7 +60,7 @@ In this section, you should describe all kinds of requirements for your module: 
 | Postconditions | The Student can now see the events from the .csv file on his's calendar.|
 | Normal flow | 1. The Student accesses his’s schedule page on the *uni* app.<br/> 2. The Student can press the import .csv button, that opens the file browser of the Student’s device, so he can choose the file to import. |
 | Alternative flow |  1. [Invalid file] If the file type is invalid or unformatted, an error message will appear, indicating the error type.|
-<br/>
+
 ### User stories
 The user stories should be created as GitHub issues. Therefore, this section will *not* exist in your report, it is here only to explain how you should describe the requirements of the product as **user stories**. 
 
