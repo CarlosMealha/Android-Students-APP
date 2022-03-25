@@ -15,7 +15,7 @@ Unlike Sigarra the schedule could be updated to add/remove classes or events dep
 
 ## Main Features
  - Add events - add classes not in your default schedule or other extracurricular activities to better organize your week.
- - Remove/hide events - hide classes that you can't attend or remove events added previously.
+ - Remove events - remove events added previously or that were already in the main schedule.
  - Share your timetable - allow your friends to see your timetable, making appointments easier to schedule.
 
 ## Required API's
