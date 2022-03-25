@@ -30,8 +30,7 @@ In this section, you should describe all kinds of requirements for your module: 
 | Description | The student removes an existing event to the calendar|
 | Preconditions | - Student has access to the *uni* app <br/> - A removable event exists in the students' calendar|
 | Postconditions | Student can no longer see the event in the calendar |
-| Normal flow | |
-| Alternative flow | |
+| Normal flow | 1. Student accesses the schedule page of Uni app. <br/>2. Student presses the edit button.<br/>3. It opens a pop up window. <br/>4. Student selects the remove function.<br/>5. Student will choose the event type, name and day of the week, that he wants to remove<br/>6. After that, the Student can press the button to submit the changes, and it will immediately disappear from the schedule page.|
 <br/>
 
 | Name | Edit event from calendar |
@@ -40,8 +39,8 @@ In this section, you should describe all kinds of requirements for your module: 
 | Description | The student edits an event to the exising calendar |
 | Preconditions | - Student has access to the *uni* app <br/> - An editable event exists in the students' calendar|
 | Postconditions | Student can now see the edited event in the calendar |
-| Normal flow | |
-| Alternative flow | |
+| Normal flow | 1. Student accesses the schedule page of Uni app.<br/> 2. Student can hold the event from the schedule that he wants to edit <br/> 3. The event will zoom and then he can make the changes that he wants (name, type, time, and day)|
+| Alternative flow | 1. [Remove and add] Student can just remove and add a new event, in the same way that was explained before.  |
 <br/>
 
 | Name | Export calendar to .csv |
