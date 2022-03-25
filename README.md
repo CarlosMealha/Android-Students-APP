@@ -22,8 +22,8 @@ You can find here detailed about the product (or mini-app or module), from a hig
 
 Thank you!
 
-Carlos Sousa - up202005954 
-Guilherme Pereira - up202007375 
-Mateus Alves - up201700131 
-Rui Andrade - up202007539 
-João Teixeira - up201900190
+Carlos Sousa - up202005954 <br/>
+Guilherme Pereira - up202007375 <br/> 
+Mateus Alves - up201700131 <br/>
+Rui Andrade - up202007539 <br/>
+João Teixeira - up201900190 <br/>
