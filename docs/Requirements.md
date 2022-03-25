@@ -49,7 +49,7 @@ In this section, you should describe all kinds of requirements for your module: 
 | Description | The student exports the *uni* calendar to a .csv file. |
 | Preconditions | Student has access to the *uni* app. |
 | Postconditions | Student has access to the calendar in a .csv file. |
-| Normal flow | 1. Student access the schedule page of Uni app.<br/>  2. Student can press the button to export the schedule file.<br/> 3. It will open a window where the Student can choose where he wants to register the .csv schedule file.|
+| Normal flow | 1. Student access the schedule page of Uni app.<br/>  2. Student can press the button to export the schedule file.<br/> 3. It will open a window where the Student can choose where to register the .csv schedule file.|
 <br/>
 
 | Name | Import .csv to calendar |
