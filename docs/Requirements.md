@@ -2,8 +2,6 @@
 
 ## Requirements
 
-In this section, you should describe all kinds of requirements for your module: functional and non-functional requirements.
-
 ### Use case model 
 
  <p align="center" justify="center">
