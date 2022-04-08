@@ -8,9 +8,14 @@
 
 ### Physical architecture
 
+<img src="../img/image.png"/>
 
 
 
 ### Vertical prototype
 
-
+<img src="../img/verticalProt1.png"/>
+<img src="../img/verticalProt2.png"/>
+<img src="../img/verticalProt3.png"/>
+<img src="../img/verticalProt4.png"/>
+<img src="../img/verticalProt5.png"/>
