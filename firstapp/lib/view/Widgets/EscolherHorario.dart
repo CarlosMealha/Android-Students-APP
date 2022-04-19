@@ -1,6 +1,6 @@
 import 'package:firstapp/Data/Horario.dart';
 import 'package:flutter/material.dart';
-import "package:firstapp/UI/EscolherCadeira.dart";
+import "package:firstapp/view/Widgets/EscolherCadeira.dart";
 import "package:firstapp/Data/Horario.dart";
 
 class EscolherHorarioWidget extends StatefulWidget {

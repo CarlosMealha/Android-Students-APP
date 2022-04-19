@@ -1,6 +1,6 @@
 import 'package:firstapp/Data/Cadeiras.dart';
 import 'package:flutter/material.dart';
-import "package:firstapp/UI/EscolherCadeira.dart";
+import "package:firstapp/view/Widgets/EscolherCadeira.dart";
 import "package:firstapp/Data/Cadeiras.dart";
 
 class EscolherCadeiraWidget extends StatefulWidget {

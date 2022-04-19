@@ -1,5 +1,8 @@
-import 'package:firstapp/UI/PopUpDialog.dart';
+import 'dart:async';
+
+import 'package:firstapp/view/Widgets/PopUpDialog.dart';
 import 'package:flutter/material.dart';
+import 'package:firstapp/view/theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: "Schedule V2",
       home: Scaffold(
           body: Center(
         child: PopUpDialogWidgetWidget(),
