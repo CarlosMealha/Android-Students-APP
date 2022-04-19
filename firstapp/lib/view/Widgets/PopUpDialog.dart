@@ -19,7 +19,7 @@ class PopUpDialogWidgetWidget extends StatelessWidget {
               color: Colors.black,
             ),
             shape: CircleBorder(),
-            fillColor: Colors.orange,
+            fillColor: Colors.red,
             elevation: 2.0,
             padding: EdgeInsets.all(15.0),
             onPressed: () => showDialog<String>(
