@@ -16,8 +16,13 @@ class FriendsPageViewState extends SecondaryPageViewState {
     return ListView(
       children: <Widget>[
         PageTitle(name: 'Amigos'),
-        
-        
+        Container(
+          margin: EdgeInsets.only(left: borderMargin, right: borderMargin),
+          decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: Theme.of(context).dividerColor))),
+          padding: EdgeInsets.only(bottom: 15),
+        )
       ],
     );
   }
