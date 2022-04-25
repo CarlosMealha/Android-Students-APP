@@ -11,6 +11,28 @@ class ScheduleTopBar extends StatelessWidget {
     return createTopBar(context);
   }
 
+  Widget createActionButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () => showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: Text('Adicionar Eventos!!!'),
+                content: Container(
+                  height: 200.0,
+                  width: 100.0,
+                ),
+                actions: [
+                  TextButton(
+                      child: Text('Cancelar'),
+                      onPressed: () => Navigator.pop(context))
+                ]);
+          }), //Add FAB functionality here
+      tooltip: 'Adicionar widget',
+      child: Icon(Icons.add),
+    );
+  }
+
   Widget createTopBar(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
@@ -24,8 +46,8 @@ class ScheduleTopBar extends StatelessWidget {
         Container(
             alignment: Alignment.bottomRight,
             child: GestureDetector(
-                onTap: () => StoreProvider.of<AppState>(context)
-                    .dispatch(SetHomePageEditingMode(!this.isEditing(context))),
+                onTap: () => StoreProvider.of<AppState>(context).dispatch(
+                    SetSchedulePageEditingMode(!this.isEditing(context))),
                 child: Text(
                     this.isEditing(context) ? 'Concluir Edição' : 'Editar',
                     style: Theme.of(context).textTheme.caption)))
@@ -36,7 +58,7 @@ class ScheduleTopBar extends StatelessWidget {
   bool isEditing(context) {
     final bool result = StoreProvider.of<AppState>(context)
         .state
-        .content['homePageEditingMode'];
+        .content['schedulePageEditingMode'];
     if (result == null) return false;
     return result;
   }

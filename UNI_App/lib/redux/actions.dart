@@ -50,7 +50,6 @@ class SetScheduleStatusAction {
   SetScheduleStatusAction(this.status);
 }
 
-
 class SetInitialStoreStateAction {
   SetInitialStoreStateAction();
 }
@@ -148,6 +147,11 @@ class SetFeesRefreshTimeAction {
 class SetHomePageEditingMode {
   bool state;
   SetHomePageEditingMode(this.state);
+}
+
+class SetSchedulePageEditingMode {
+  bool state;
+  SetSchedulePageEditingMode(this.state);
 }
 
 class SetLastUserInfoUpdateTime {

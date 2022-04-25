@@ -56,13 +56,15 @@ AppState appReducers(AppState state, dynamic action) {
     return setInitialStoreState(state, action);
   } else if (action is SetHomePageEditingMode) {
     return setHomePageEditingMode(state, action);
+  } else if (action is SetSchedulePageEditingMode) {
+    return setSchedulePageEditingMode(state, action);
   } else if (action is SetLastUserInfoUpdateTime) {
     return setLastUserInfoUpdateTime(state, action);
   } else if (action is SetExamFilter) {
     return setExamFilter(state, action);
   } else if (action is SetUserFaculties) {
     return setUserFaculties(state, action);
-  } else if(action is SetRestaurantsAction){
+  } else if (action is SetRestaurantsAction) {
     return setRestaurantsAction(state, action);
   }
   return state;
@@ -201,6 +203,13 @@ AppState setFeesRefreshTime(AppState state, SetFeesRefreshTimeAction action) {
 AppState setHomePageEditingMode(AppState state, SetHomePageEditingMode action) {
   Logger().i('setting home page editing mode to ' + action.state.toString());
   return state.cloneAndUpdateValue('homePageEditingMode', action.state);
+}
+
+AppState setSchedulePageEditingMode(
+    AppState state, SetSchedulePageEditingMode action) {
+  Logger()
+      .i('setting schedule page editing mode to ' + action.state.toString());
+  return state.cloneAndUpdateValue('schedulePageEditingMode', action.state);
 }
 
 AppState setLastUserInfoUpdateTime(
