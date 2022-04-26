@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni/view/Widgets/add_friend_menu.dart';
 import 'package:uni/view/Widgets/page_title.dart';
 import 'package:uni/view/Widgets/row_container.dart';
 import 'package:uni/view/Pages/secondary_page_view.dart';
@@ -22,7 +23,8 @@ class FriendsPageViewState extends SecondaryPageViewState {
               border: Border(
                   bottom: BorderSide(color: Theme.of(context).dividerColor))),
           padding: EdgeInsets.only(bottom: 15),
-        )
+        ),
+        Expanded(child: addFriendMenu())
       ],
     );
   }
