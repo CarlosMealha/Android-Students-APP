@@ -5,8 +5,16 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/redux/actions.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:weekday_selector/weekday_selector.dart';
 
-class ScheduleAddButton extends StatelessWidget {
+class ScheduleAddButton extends StatefulWidget {
+  @override
+  State<ScheduleAddButton> createState() => _ScheduleAddButtonState();
+}
+
+class _ScheduleAddButtonState extends State<ScheduleAddButton> {
+  TimeOfDay selectedTime = TimeOfDay.now();
+  final values = List.filled(7, false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,15 +52,82 @@ class ScheduleAddButton extends StatelessWidget {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                    title: Text('Adicionar Uc!!!!!'),
+                    title: Text('Adicionar Unidade Curricular'),
                     content: Container(
-                      height: 200.0,
+                      //child: ListView(children: getCardAdders(context)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Nome da Atividade'),
+                            ),
+                            TextField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Local'),
+                            ),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Text('Hora de Início: '),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      _selectTime(context);
+                                    },
+                                    child: Text(
+                                        '${selectedTime.hour}:${selectedTime.minute}'),
+                                  ),
+                                ]),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Text('Hora de Fim: '),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      _selectTime(context);
+                                    },
+                                    child: Text(
+                                        '${selectedTime.hour}:${selectedTime.minute}'),
+                                  ),
+                                ]),
+                            WeekdaySelector(
+                              firstDayOfWeek: DateTime.monday,
+                              displayedDays: {
+                                DateTime.monday,
+                                DateTime.tuesday,
+                                DateTime.wednesday,
+                                DateTime.thursday,
+                                DateTime.friday,
+                              },
+                              onChanged: (int day) {
+                                setState(() {
+                                  final index = day % 7;
+                                  values[index] = !values[index];
+                                });
+                              },
+                              values: values,
+                            )
+                          ]),
+                      height: 400.0,
                       width: 100.0,
                     ),
                     actions: [
-                      TextButton(
-                          child: Text('Cancelar'),
-                          onPressed: () => Navigator.pop(context))
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            TextButton(
+                                child: Text('Cancelar'),
+                                onPressed: () => Navigator.pop(context)),
+                            TextButton(
+                                child: Text('Adicionar'),
+                                onPressed: () => Navigator.pop(context))
+                          ])
                     ]);
               }), //Add FAB functionality here
         ),
@@ -66,15 +141,82 @@ class ScheduleAddButton extends StatelessWidget {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                    title: Text('Adicionar ExtraCurricular!!!!!'),
+                    title: Text('Adicionar Atividade Extracurricular'),
                     content: Container(
-                      height: 200.0,
+                      //child: ListView(children: getCardAdders(context)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Nome da Atividade'),
+                            ),
+                            TextField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Local'),
+                            ),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Text('Hora de Início: '),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      _selectTime(context);
+                                    },
+                                    child: Text(
+                                        '${selectedTime.hour}:${selectedTime.minute}'),
+                                  ),
+                                ]),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Text('Hora de Fim: '),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      _selectTime(context);
+                                    },
+                                    child: Text(
+                                        '${selectedTime.hour}:${selectedTime.minute}'),
+                                  ),
+                                ]),
+                            WeekdaySelector(
+                              firstDayOfWeek: DateTime.monday,
+                              displayedDays: {
+                                DateTime.monday,
+                                DateTime.tuesday,
+                                DateTime.wednesday,
+                                DateTime.thursday,
+                                DateTime.friday,
+                              },
+                              onChanged: (int day) {
+                                setState(() {
+                                  final index = day % 7;
+                                  values[index] = !values[index];
+                                });
+                              },
+                              values: values,
+                            )
+                          ]),
+                      height: 400.0,
                       width: 100.0,
                     ),
                     actions: [
-                      TextButton(
-                          child: Text('Cancelar'),
-                          onPressed: () => Navigator.pop(context))
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            TextButton(
+                                child: Text('Cancelar'),
+                                onPressed: () => Navigator.pop(context)),
+                            TextButton(
+                                child: Text('Adicionar'),
+                                onPressed: () => Navigator.pop(context))
+                          ])
                     ]);
               }), //Add FAB functionality here
         ),
@@ -89,62 +231,17 @@ class ScheduleAddButton extends StatelessWidget {
     if (result == null) return false;
     return result;
   }
-  /*
-  Widget createDefaultAddButton(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () => Column(
-        children: <Widget>[
-          Positioned(bottom: 10, child: createUCActionButton(context)),
-          Positioned(bottom: 10, child: createExtraCurricularActionButton(context))
-        ],
-      ), //Add FAB functionality here
-      tooltip: 'Adicionar widget',
-      child: Icon(Icons.add),
-    );
-  }
 
-  Widget createUCActionButton(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () => showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-                title: Text('Adicionar Uc!!!!!'),
-                content: Container(
-                  height: 200.0,
-                  width: 100.0,
-                ),
-                actions: [
-                  TextButton(
-                      child: Text('Cancelar'),
-                      onPressed: () => Navigator.pop(context))
-                ]);
-          }), //Add FAB functionality here
-      tooltip: 'Adicionar widget',
-      child: Icon(Icons.work),
+  _selectTime(BuildContext context) async {
+    final TimeOfDay timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+      initialEntryMode: TimePickerEntryMode.dial,
     );
+    if (timeOfDay != null && timeOfDay != selectedTime) {
+      setState(() {
+        selectedTime = timeOfDay;
+      });
+    }
   }
-
-  Widget createExtraCurricularActionButton(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () => showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-                title: Text('Adicionar ExtraCurricular!!!!!'),
-                content: Container(
-                  height: 200.0,
-                  width: 100.0,
-                ),
-                actions: [
-                  TextButton(
-                      child: Text('Cancelar'),
-                      onPressed: () => Navigator.pop(context))
-                ]);
-          }), //Add FAB functionality here
-      tooltip: 'Adicionar widget',
-      child: Icon(Icons.rowing),
-    );
-  }
-  */
 }
