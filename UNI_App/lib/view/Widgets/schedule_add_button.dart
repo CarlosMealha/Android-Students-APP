@@ -5,6 +5,7 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/redux/actions.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:uni/view/theme.dart';
 import 'package:weekday_selector/weekday_selector.dart';
 
 class ScheduleAddButton extends StatefulWidget {
@@ -13,7 +14,8 @@ class ScheduleAddButton extends StatefulWidget {
 }
 
 class _ScheduleAddButtonState extends State<ScheduleAddButton> {
-  TimeOfDay selectedTime = TimeOfDay.now();
+  TimeOfDay startTime = TimeOfDay.now();
+  TimeOfDay endTime = TimeOfDay.now();
   final values = List.filled(7, false);
   @override
   Widget build(BuildContext context) {
@@ -25,19 +27,11 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
 
   Widget createActionButton(BuildContext context) {
     return SpeedDial(
-      //animatedIcon: AnimatedIcons.menu_close,
       animatedIconTheme: IconThemeData(size: 22.0),
-      // this is ignored if animatedIcon is non null
       child: Icon(Icons.add),
       curve: Curves.bounceIn,
       overlayColor: Colors.black,
       overlayOpacity: 0.5,
-      //onOpen: () => print('OPENING DIAL'),
-      //onClose: () => print('DIAL CLOSED'),
-      tooltip: 'Speed Dial',
-      heroTag: 'speed-dial-hero-tag',
-      //backgroundColor: Colors.white,
-      //foregroundColor: Colors.black,
       icon: Icons.add,
       elevation: 8.0,
       shape: CircleBorder(),
@@ -51,84 +45,32 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
           onTap: () => showDialog(
               context: context,
               builder: (BuildContext context) {
-                return AlertDialog(
-                    title: Text('Adicionar Unidade Curricular'),
-                    content: Container(
-                      //child: ListView(children: getCardAdders(context)),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            TextField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Nome da Atividade'),
-                            ),
-                            TextField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Local'),
-                            ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Text('Hora de Início: '),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      _selectTime(context);
-                                    },
-                                    child: Text(
-                                        '${selectedTime.hour}:${selectedTime.minute}'),
-                                  ),
-                                ]),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Text('Hora de Fim: '),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      _selectTime(context);
-                                    },
-                                    child: Text(
-                                        '${selectedTime.hour}:${selectedTime.minute}'),
-                                  ),
-                                ]),
-                            WeekdaySelector(
-                              firstDayOfWeek: DateTime.monday,
-                              displayedDays: {
-                                DateTime.monday,
-                                DateTime.tuesday,
-                                DateTime.wednesday,
-                                DateTime.thursday,
-                                DateTime.friday,
-                              },
-                              onChanged: (int day) {
-                                setState(() {
-                                  final index = day % 7;
-                                  values[index] = !values[index];
-                                });
-                              },
-                              values: values,
-                            )
-                          ]),
-                      height: 400.0,
-                      width: 100.0,
-                    ),
-                    actions: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            TextButton(
-                                child: Text('Cancelar'),
-                                onPressed: () => Navigator.pop(context)),
-                            TextButton(
-                                child: Text('Adicionar'),
-                                onPressed: () => Navigator.pop(context))
-                          ])
-                    ]);
+                return StatefulBuilder(
+                    builder: (context, StateSetter setState) {
+                  return AlertDialog(
+                      title: Text('Adicionar Unidade Curricular'),
+                      content: Container(
+                        //child: ListView(children: getCardAdders(context)),
+                        child: getUCMenu(context, setState),
+                        height: 400.0,
+                        width: 100.0,
+                      ),
+                      actions: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              TextButton(
+                                  child: Text('Cancelar'),
+                                  onPressed: () => Navigator.pop(context)),
+                              TextButton(
+                                  child: Text('Adicionar'),
+                                  // Criar Lecture
+                                  // Adicionar Lecture
+                                  // Fazer o resto do projeto
+                                  onPressed: () => Navigator.pop(context))
+                            ])
+                      ]);
+                });
               }), //Add FAB functionality here
         ),
         SpeedDialChild(
@@ -136,73 +78,13 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
           foregroundColor: Colors.white,
           backgroundColor: Color(0xFF35424a),
           label: 'Extra Curricular',
-          //labelStyle: TextTheme(fontSize: 18.0),
           onTap: () => showDialog(
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
                     title: Text('Adicionar Atividade Extracurricular'),
                     content: Container(
-                      //child: ListView(children: getCardAdders(context)),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            TextField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Nome da Atividade'),
-                            ),
-                            TextField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Local'),
-                            ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Text('Hora de Início: '),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      _selectTime(context);
-                                    },
-                                    child: Text(
-                                        '${selectedTime.hour}:${selectedTime.minute}'),
-                                  ),
-                                ]),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Text('Hora de Fim: '),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      _selectTime(context);
-                                    },
-                                    child: Text(
-                                        '${selectedTime.hour}:${selectedTime.minute}'),
-                                  ),
-                                ]),
-                            WeekdaySelector(
-                              firstDayOfWeek: DateTime.monday,
-                              displayedDays: {
-                                DateTime.monday,
-                                DateTime.tuesday,
-                                DateTime.wednesday,
-                                DateTime.thursday,
-                                DateTime.friday,
-                              },
-                              onChanged: (int day) {
-                                setState(() {
-                                  final index = day % 7;
-                                  values[index] = !values[index];
-                                });
-                              },
-                              values: values,
-                            )
-                          ]),
+                      child: getExtraCMenu(context, setState),
                       height: 400.0,
                       width: 100.0,
                     ),
@@ -212,6 +94,9 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
                           children: <Widget>[
                             TextButton(
                                 child: Text('Cancelar'),
+                                // Criar Lecture
+                                // Adicionar Lecture
+                                // Fazer o resto do projeto
                                 onPressed: () => Navigator.pop(context)),
                             TextButton(
                                 child: Text('Adicionar'),
@@ -232,15 +117,132 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
     return result;
   }
 
-  _selectTime(BuildContext context) async {
+  Widget getUCMenu(BuildContext context, StateSetter setState) {
+    return Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <
+        Widget>[
+      TextField(
+        obscureText: true,
+        decoration: InputDecoration(
+            border: OutlineInputBorder(), labelText: 'Nome da Atividade'),
+      ),
+      TextField(
+        obscureText: true,
+        decoration:
+            InputDecoration(border: OutlineInputBorder(), labelText: 'Local'),
+      ),
+      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+        Text('Hora de Início: '),
+        ElevatedButton(
+          onPressed: () {
+            _selectStartTime(context, setState);
+          },
+          child: Text('${startTime.hour}:${startTime.minute}'),
+        ),
+      ]),
+      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+        Text('Hora de Fim: '),
+        ElevatedButton(
+          onPressed: () {
+            _selectEndTime(context, setState);
+          },
+          child: Text('${endTime.hour}:${endTime.minute}'),
+        ),
+      ]),
+      WeekdaySelector(
+        selectedFillColor: Color.fromARGB(255, 0x75, 0x17, 0x1e),
+        shortWeekdays: ['D', '2ª', '3ª', '4ª', '5ª', '6ª', 'S'],
+        firstDayOfWeek: DateTime.sunday,
+        displayedDays: {
+          DateTime.monday,
+          DateTime.tuesday,
+          DateTime.wednesday,
+          DateTime.thursday,
+          DateTime.friday,
+        },
+        onChanged: (int day) {
+          setState(() {
+            final index = day % 7;
+            values[index] = !values[index];
+          });
+        },
+        values: values,
+      )
+    ]);
+  }
+
+  Widget getExtraCMenu(BuildContext context, StateSetter setState) {
+    return Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <
+        Widget>[
+      TextField(
+        obscureText: true,
+        decoration: InputDecoration(
+            border: OutlineInputBorder(), labelText: 'Nome da Atividade'),
+      ),
+      TextField(
+        obscureText: true,
+        decoration:
+            InputDecoration(border: OutlineInputBorder(), labelText: 'Local'),
+      ),
+      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+        Text('Hora de Início: '),
+        ElevatedButton(
+          onPressed: () {
+            _selectStartTime(context, setState);
+          },
+          child: Text('${startTime.hour}:${startTime.minute}'),
+        ),
+      ]),
+      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
+        Text('Hora de Fim: '),
+        ElevatedButton(
+          onPressed: () {
+            _selectEndTime(context, setState);
+          },
+          child: Text('${endTime.hour}:${endTime.minute}'),
+        ),
+      ]),
+      WeekdaySelector(
+        firstDayOfWeek: DateTime.monday,
+        displayedDays: {
+          DateTime.monday,
+          DateTime.tuesday,
+          DateTime.wednesday,
+          DateTime.thursday,
+          DateTime.friday,
+        },
+        onChanged: (int day) {
+          setState(() {
+            final index = day % 7;
+            values[index] = !values[index];
+          });
+        },
+        values: values,
+      )
+    ]);
+  }
+
+  _selectStartTime(BuildContext context, StateSetter setState) async {
     final TimeOfDay timeOfDay = await showTimePicker(
       context: context,
-      initialTime: selectedTime,
+      initialTime: startTime,
       initialEntryMode: TimePickerEntryMode.dial,
     );
-    if (timeOfDay != null && timeOfDay != selectedTime) {
+    if (timeOfDay != null && timeOfDay != startTime) {
       setState(() {
-        selectedTime = timeOfDay;
+        startTime = timeOfDay;
+      });
+    }
+  }
+
+  _selectEndTime(BuildContext context, StateSetter setState) async {
+    final TimeOfDay timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: endTime,
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null && timeOfDay != endTime) {
+      setState(() {
+        endTime = timeOfDay;
       });
     }
   }
