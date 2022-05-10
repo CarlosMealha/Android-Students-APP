@@ -3,7 +3,7 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
-StepDefinitionGeneric page_navigation() {
+StepDefinitionGeneric pageNavigation() {
   return given1<String, FlutterWorld>('I navigate to the {string} page',
       (page, context) async {
     String pageRoute;

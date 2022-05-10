@@ -21,6 +21,7 @@ class ScheduleAddButton extends StatelessWidget {
       animatedIconTheme: IconThemeData(size: 22.0),
       // this is ignored if animatedIcon is non null
       child: Icon(Icons.add),
+      key: Key('add'),
       curve: Curves.bounceIn,
       overlayColor: Colors.black,
       overlayOpacity: 0.5,
