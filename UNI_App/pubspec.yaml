@@ -16,6 +16,8 @@ environment:
   flutter: 2.0.1
 
 dependencies:
+  dependencies:
+  flutter_gherkin: ^2.0.0
   flutter:
     sdk: flutter
   html: ^0.15.0
