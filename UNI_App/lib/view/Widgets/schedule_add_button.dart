@@ -36,6 +36,7 @@ class ScheduleAddButton extends StatelessWidget {
       shape: CircleBorder(),
       children: [
         SpeedDialChild(
+          key: Key('UC'),
           child: Icon(Icons.work),
           foregroundColor: Colors.white,
           backgroundColor: Color(0xFF35424a),
@@ -58,6 +59,7 @@ class ScheduleAddButton extends StatelessWidget {
               }), //Add FAB functionality here
         ),
         SpeedDialChild(
+          key: Key('ExC'),
           child: Icon(Icons.rowing),
           foregroundColor: Colors.white,
           backgroundColor: Color(0xFF35424a),
