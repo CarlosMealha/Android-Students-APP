@@ -16,7 +16,8 @@ class ScheduleAddButton extends StatefulWidget {
 class _ScheduleAddButtonState extends State<ScheduleAddButton> {
   TimeOfDay startTime = TimeOfDay.now();
   TimeOfDay endTime = TimeOfDay.now();
-  final values = List.filled(7, false);
+  final UCvalues = List.filled(7, false);
+  final ECvalues = List.filled(7, false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,28 +82,31 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
           onTap: () => showDialog(
               context: context,
               builder: (BuildContext context) {
-                return AlertDialog(
-                    title: Text('Adicionar Atividade Extracurricular'),
-                    content: Container(
-                      child: getExtraCMenu(context, setState),
-                      height: 400.0,
-                      width: 100.0,
-                    ),
-                    actions: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            TextButton(
-                                child: Text('Cancelar'),
-                                // Criar Lecture
-                                // Adicionar Lecture
-                                // Fazer o resto do projeto
-                                onPressed: () => Navigator.pop(context)),
-                            TextButton(
-                                child: Text('Adicionar'),
-                                onPressed: () => Navigator.pop(context))
-                          ])
-                    ]);
+                return StatefulBuilder(
+                    builder: (context, StateSetter setState) {
+                  return AlertDialog(
+                      title: Text('Adicionar Atividade Extracurricular'),
+                      content: Container(
+                        child: getExtraCMenu(context, setState),
+                        height: 400.0,
+                        width: 100.0,
+                      ),
+                      actions: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              TextButton(
+                                  child: Text('Cancelar'),
+                                  // Criar Lecture
+                                  // Adicionar Lecture
+                                  // Fazer o resto do projeto
+                                  onPressed: () => Navigator.pop(context)),
+                              TextButton(
+                                  child: Text('Adicionar'),
+                                  onPressed: () => Navigator.pop(context))
+                            ])
+                      ]);
+                });
               }), //Add FAB functionality here
         ),
       ],
@@ -120,15 +124,21 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
   Widget getUCMenu(BuildContext context, StateSetter setState) {
     return Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <
         Widget>[
-      TextField(
-        obscureText: true,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(), labelText: 'Nome da Atividade'),
+      Container(
+        width: 200.0,
+        child: TextField(
+          style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
+          decoration: InputDecoration(
+              border: OutlineInputBorder(), labelText: 'Nome da Atividade'),
+        ),
       ),
-      TextField(
-        obscureText: true,
-        decoration:
-            InputDecoration(border: OutlineInputBorder(), labelText: 'Local'),
+      Container(
+        width: 200.0,
+        child: TextField(
+          style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
+          decoration:
+              InputDecoration(border: OutlineInputBorder(), labelText: 'Local'),
+        ),
       ),
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
         Text('Hora de Início: '),
@@ -162,10 +172,10 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
         onChanged: (int day) {
           setState(() {
             final index = day % 7;
-            values[index] = !values[index];
+            UCvalues[index] = !UCvalues[index];
           });
         },
-        values: values,
+        values: UCvalues,
       )
     ]);
   }
@@ -173,15 +183,21 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
   Widget getExtraCMenu(BuildContext context, StateSetter setState) {
     return Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <
         Widget>[
-      TextField(
-        obscureText: true,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(), labelText: 'Nome da Atividade'),
+      Container(
+        width: 200.0,
+        child: TextField(
+          style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
+          decoration: InputDecoration(
+              border: OutlineInputBorder(), labelText: 'Nome da Atividade'),
+        ),
       ),
-      TextField(
-        obscureText: true,
-        decoration:
-            InputDecoration(border: OutlineInputBorder(), labelText: 'Local'),
+      Container(
+        width: 200.0,
+        child: TextField(
+          style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
+          decoration:
+              InputDecoration(border: OutlineInputBorder(), labelText: 'Local'),
+        ),
       ),
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
         Text('Hora de Início: '),
@@ -202,7 +218,9 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
         ),
       ]),
       WeekdaySelector(
-        firstDayOfWeek: DateTime.monday,
+        selectedFillColor: Color.fromARGB(255, 0x75, 0x17, 0x1e),
+        shortWeekdays: ['D', '2ª', '3ª', '4ª', '5ª', '6ª', 'S'],
+        firstDayOfWeek: DateTime.sunday,
         displayedDays: {
           DateTime.monday,
           DateTime.tuesday,
@@ -213,10 +231,10 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
         onChanged: (int day) {
           setState(() {
             final index = day % 7;
-            values[index] = !values[index];
+            ECvalues[index] = !ECvalues[index];
           });
         },
-        values: values,
+        values: ECvalues,
       )
     ]);
   }
