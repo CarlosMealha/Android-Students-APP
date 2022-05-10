@@ -15,6 +15,7 @@ class FriendsPageViewState extends SecondaryPageViewState {
   Widget getBody(BuildContext context) {
     final MediaQueryData queryData = MediaQuery.of(context);
     return ListView(
+      key: Key('friends'),
       children: <Widget>[
         PageTitle(name: 'Amigos'),
         Container(
