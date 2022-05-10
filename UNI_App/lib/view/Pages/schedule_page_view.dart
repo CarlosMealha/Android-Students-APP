@@ -27,7 +27,7 @@ class SchedulePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     final MediaQueryData queryData = MediaQuery.of(context);
 
-    return Column(key: Key('schedule'), children: <Widget>[
+    return Column(children: <Widget>[
       ListView(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,

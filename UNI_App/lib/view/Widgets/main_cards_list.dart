@@ -123,9 +123,6 @@ class MainCardsList extends StatelessWidget {
             onTap: () => StoreProvider.of<AppState>(context)
                 .dispatch(SetHomePageEditingMode(!this.isEditing(context))),
             child: Text(this.isEditing(context) ? 'Concluir Edição' : 'Editar',
-                key: this.isEditing(context)
-                    ? Key('conclude edition')
-                    : Key('edit'),
                 style: Theme.of(context).textTheme.caption))
       ]),
     );
