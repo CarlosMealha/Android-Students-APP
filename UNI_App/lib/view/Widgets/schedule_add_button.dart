@@ -30,6 +30,7 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
     return SpeedDial(
       animatedIconTheme: IconThemeData(size: 22.0),
       child: Icon(Icons.add),
+      key: Key('add'),
       curve: Curves.bounceIn,
       overlayColor: Colors.black,
       overlayOpacity: 0.5,
@@ -38,6 +39,7 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
       shape: CircleBorder(),
       children: [
         SpeedDialChild(
+          key: Key('UC'),
           child: Icon(Icons.work),
           foregroundColor: Colors.white,
           backgroundColor: Color(0xFF35424a),
@@ -75,6 +77,7 @@ class _ScheduleAddButtonState extends State<ScheduleAddButton> {
               }), //Add FAB functionality here
         ),
         SpeedDialChild(
+          key: Key('ExC'),
           child: Icon(Icons.rowing),
           foregroundColor: Colors.white,
           backgroundColor: Color(0xFF35424a),
