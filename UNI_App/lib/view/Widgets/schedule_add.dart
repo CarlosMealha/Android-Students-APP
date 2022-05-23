@@ -278,7 +278,10 @@ Lecture LectureBuilder() {
 
   for (int i = 0; i < 7; i++) {
     if (values[i]) {
-      return (Lecture(subject, 'TP', i, 1, room, teacher, classNumber,
+      Lecture l = Lecture(subject, 'TP', i - 1, 1, room, teacher, classNumber,
+          startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes);
+      print(l.subject);
+      return (Lecture(subject, 'TP', i - 1, 1, room, teacher, classNumber,
           startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes));
     }
   }

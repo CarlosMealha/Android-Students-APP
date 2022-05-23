@@ -263,11 +263,12 @@ ThunkAction<AppState> getUserSchedule(
     try {
       store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
 
-      final List<Lecture> lectures =
+      List<Lecture> lectures =
           await getLecturesFromFetcherOrElse(fetcher, store);
 
       // Updates local database according to the information fetched -- Lectures
       if (userPersistentInfo.item1 != '' && userPersistentInfo.item2 != '') {
+        lectures = store.state.content['schedule'];
         final AppLecturesDatabase db = AppLecturesDatabase();
         db.saveNewLectures(lectures);
       }
@@ -303,7 +304,8 @@ ThunkAction<AppState> addUserClass(Completer<Null> action, Lecture lec,
     store.dispatch(getUserSchedule(action, userPersistentInfo));
 
     final AppLecturesDatabase db = AppLecturesDatabase();
-    db.saveNewLectures(lecs);
+    //db.saveNewLectures(lecs);
+    //db.addLectures(lecs);
   };
 }
 
