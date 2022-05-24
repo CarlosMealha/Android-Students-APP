@@ -284,8 +284,7 @@ ThunkAction<AppState> getUserSchedule(
 }
 
 ThunkAction<AppState> addUserClass(Completer<Null> action, Lecture lec,
-    Tuple2<String, String> userPersistentInfo,
-    {ScheduleFetcher fetcher}) {
+    Tuple2<String, String> userPersistentInfo) {
   return (Store<AppState> store) {
     store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
     //store.dispatch(SetUser(RequestStatus.busy));
@@ -306,6 +305,21 @@ ThunkAction<AppState> addUserClass(Completer<Null> action, Lecture lec,
     final AppLecturesDatabase db = AppLecturesDatabase();
     //db.saveNewLectures(lecs);
     //db.addLectures(lecs);
+  };
+}
+
+ThunkAction<AppState> removeUserClass(Completer<Null> action, Lecture lec,
+    Tuple2<String, String> userPersistentInfo) {
+  return (Store<AppState> store) {
+    store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
+    final Map<String, BusStopData> lectures = store.state.content['schedule'];
+    lectures.remove(lec);
+
+    store.dispatch(SetBusStopsAction(lectures));
+    store.dispatch(getUserSchedule(action, userPersistentInfo));
+
+    final AppBusStopDatabase db = AppBusStopDatabase();
+    db.setBusStops(lec);
   };
 }
 

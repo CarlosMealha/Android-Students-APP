@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uni/model/app_state.dart';
+import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/view/Widgets/row_container.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uni/view/Widgets/schedule_add.dart';
 
-class ScheduleSlot extends StatelessWidget {
+class ScheduleSlot extends StatefulWidget {
   final String subject;
+  final int day;
   final String rooms;
   final String begin;
   final String end;
@@ -14,6 +19,7 @@ class ScheduleSlot extends StatelessWidget {
   ScheduleSlot({
     Key key,
     @required this.subject,
+    @required this.day,
     @required this.typeClass,
     @required this.rooms,
     @required this.begin,
@@ -22,6 +28,11 @@ class ScheduleSlot extends StatelessWidget {
     this.classNumber,
   }) : super(key: key);
 
+  @override
+  State<ScheduleSlot> createState() => ScheduleSlotState();
+}
+
+class ScheduleSlotState extends State<ScheduleSlot> {
   @override
   Widget build(BuildContext context) {
     return RowContainer(
@@ -32,9 +43,11 @@ class ScheduleSlot extends StatelessWidget {
     ));
   }
 
-  Widget createScheduleSlotRow(context) {
+  Widget createScheduleSlotRow(
+    context,
+  ) {
     return Container(
-        key: Key('schedule-slot-time-${this.begin}-${this.end}'),
+        key: Key('schedule-slot-time-${this.widget.begin}-${this.widget.end}'),
         margin: EdgeInsets.only(top: 3.0, bottom: 3.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -46,10 +59,10 @@ class ScheduleSlot extends StatelessWidget {
 
   Widget createScheduleSlotTime(context) {
     return Column(
-      key: Key('schedule-slot-time-${this.begin}-${this.end}'),
+      key: Key('schedule-slot-time-${this.widget.begin}-${this.widget.end}'),
       children: <Widget>[
-        createScheduleTime(this.begin, context),
-        createScheduleTime(this.end, context)
+        createScheduleTime(this.widget.begin, context),
+        createScheduleTime(this.widget.end, context)
       ],
     );
   }
@@ -61,15 +74,15 @@ class ScheduleSlot extends StatelessWidget {
 
   List<Widget> createScheduleSlotPrimInfo(context) {
     final subjectTextField = createTextField(
-        this.subject,
+        this.widget.subject,
         Theme.of(context).textTheme.headline3.apply(fontSizeDelta: 5),
         TextAlign.center);
     final typeClassTextField = createTextField(
-        ' (' + this.typeClass + ')',
+        ' (' + this.widget.typeClass + ')',
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.center);
     final roomTextField = createTextField(
-        this.rooms,
+        this.widget.rooms,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.right);
     return [
@@ -90,20 +103,34 @@ class ScheduleSlot extends StatelessWidget {
           )
         ],
       ),
-      createScheduleSlotPrimInfoColumn(roomTextField)
+      Column(children: <Widget>[
+        isEditing(context)
+            ? IconButton(
+                iconSize: 25,
+                icon: const Icon(Icons.edit),
+                tooltip: 'Edit Class',
+                onPressed: () => showDialog(
+                    context: context,
+                    builder: (BuildContext context) => StatefulBuilder(
+                        builder: (context, StateSetter setState) =>
+                            getEditingMenu(context, setState))))
+            : SizedBox(),
+        createScheduleSlotPrimInfoColumn(roomTextField),
+      ])
     ];
   }
 
   Widget createScheduleSlotTeacherInfo(context) {
     return createTextField(
-        this.teacher,
+        this.widget.teacher,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.center);
   }
 
   Widget createScheduleSlotClass(context) {
-    final classText =
-        this.classNumber != null ? (' | ' + this.classNumber) : '';
+    final classText = this.widget.classNumber != null
+        ? (' | ' + this.widget.classNumber)
+        : '';
     return createTextField(
         classText,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
@@ -120,5 +147,28 @@ class ScheduleSlot extends StatelessWidget {
 
   Widget createScheduleSlotPrimInfoColumn(elements) {
     return Container(child: elements);
+  }
+
+  bool isEditing(context) {
+    final bool result = StoreProvider.of<AppState>(context)
+        .state
+        .content['schedulePageEditingMode'];
+    return (result == null) ? false : result;
+  }
+
+  Lecture LectureBuilder2() {
+    return Lecture(
+      this.widget.subject,
+      this.widget.typeClass,
+      this.widget.day,
+      1,
+      this.widget.rooms,
+      this.widget.teacher,
+      this.widget.classNumber,
+      int.parse(this.widget.begin.substring(0, 2)),
+      int.parse(this.widget.begin.substring(4, 6)),
+      int.parse(this.widget.end.substring(0, 2)),
+      int.parse(this.widget.end.substring(4, 6)),
+    );
   }
 }
