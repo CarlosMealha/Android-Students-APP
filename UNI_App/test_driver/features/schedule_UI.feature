@@ -28,9 +28,7 @@ Feature: Schedule page UI
   Scenario: Add UC form
     Given that I have the "UC" button
     When I tap the "UC" button
-    Then I expect the four UC information fields to be present
+    Then I expect the five UC information fields to be present
     Then I expect the two UC time information fields to be present
     Then I expect the "accept" and "cancel" buttons to be present
-
-  Scenario: Add ExC form
 

@@ -28,15 +28,16 @@ class TapUCButton extends When1WithWorld<String, FlutterWorld> {
   RegExp get pattern => RegExp(r'I tap the {string} button');
 }
 
-class CheckUCInfoFields extends Then4WithWorld<String, String, String,
-    String, FlutterWorld> {
+class CheckUCInfoFields extends Then5WithWorld<String, String, String,
+    String, String, FlutterWorld> {
   @override
   Future<void> executeStep(String sbjctField, String typeField,
-      String teacherField, String dayField) async {
+      String roomField, String teacherField, String dayField) async {
     final sbjctFieldFinder = find.byValueKey(sbjctField);
     final typeFieldFinder = find.byValueKey(typeField);
     final teacherFieldFinder = find.byValueKey(teacherField);
     final dayFieldFinder = find.byValueKey(dayField);
+    final roomFieldFinder = find.byValueKey(roomField);
 
     bool sbjctFieldExists =
         await FlutterDriverUtils.isPresent(world.driver, sbjctFieldFinder);
@@ -46,11 +47,14 @@ class CheckUCInfoFields extends Then4WithWorld<String, String, String,
         await FlutterDriverUtils.isPresent(world.driver, teacherFieldFinder);
     bool dayFieldExists =
         await FlutterDriverUtils.isPresent(world.driver, dayFieldFinder);
+    bool roomFieldExists =
+        await FlutterDriverUtils.isPresent(world.driver, roomFieldFinder);
 
     expect(sbjctFieldExists, true);
     expect(typeFieldExists, true);
     expect(teacherFieldExists, true);
     expect(dayFieldExists, true);
+    expect(roomFieldExists, true);
   }
 
   @override

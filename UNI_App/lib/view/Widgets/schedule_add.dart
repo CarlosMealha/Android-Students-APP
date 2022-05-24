@@ -65,6 +65,7 @@ Widget createActionButton(BuildContext context) => SpeedDial(
       shape: CircleBorder(),
       children: [
         SpeedDialChild(
+            key: Key('UC'),
             child: Icon(Icons.work),
             foregroundColor: Colors.white,
             backgroundColor: Color(0xFF35424a),
@@ -75,6 +76,7 @@ Widget createActionButton(BuildContext context) => SpeedDial(
                     builder: (context, StateSetter setState) =>
                         getUCMenu(context, setState)))),
         SpeedDialChild(
+            key: Key('ExC'),
             child: Icon(Icons.rowing),
             foregroundColor: Colors.white,
             backgroundColor: Color(0xFF35424a),
@@ -196,6 +198,7 @@ Widget buildTypeClassField() => TextFormField(
     );
 
 Widget buildRoomField() => TextFormField(
+      key: Key('room field'),
       style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
       decoration: InputDecoration(
         labelText: 'Room',
