@@ -311,6 +311,7 @@ ThunkAction<AppState> removeUserClass(Completer<Null> action, Lecture lec,
     Tuple2<String, String> userPersistentInfo) {
   return (Store<AppState> store) {
     store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
+<<<<<<< HEAD
     final List<Lecture> lectures = store.state.content['schedule'];
     lectures.remove(lec);
 
@@ -319,6 +320,16 @@ ThunkAction<AppState> removeUserClass(Completer<Null> action, Lecture lec,
 
     //final AppLecturesDatabase db = AppLecturesDatabase();
     //db.saveNewLectures(lectures);
+=======
+    final Map<String, BusStopData> lectures = store.state.content['schedule'];
+    lectures.remove(lec);
+
+    store.dispatch(SetBusStopsAction(lectures));
+    store.dispatch(getUserSchedule(action, userPersistentInfo));
+
+    final AppBusStopDatabase db = AppBusStopDatabase();
+    db.setBusStops(lec);
+>>>>>>> 86f3240 (Added edit icon and trying to get the remove function to work)
   };
 }
 

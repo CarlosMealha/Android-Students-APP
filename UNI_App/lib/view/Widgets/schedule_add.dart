@@ -152,6 +152,38 @@ Widget getExtraCMenu(BuildContext context, StateSetter setState) => AlertDialog(
           ])
         ]);
 
+Widget getEditingMenu(BuildContext context, StateSetter setState) =>
+    AlertDialog(
+        title: Text('Adicionar Unidade Curricular'),
+        content: Container(
+          child: Form(
+            key: _formKey,
+            child: ListView(padding: EdgeInsets.all(16), children: [
+              buildSubjectField(),
+              const SizedBox(height: 16),
+              buildTypeClassField(),
+              const SizedBox(height: 16),
+              buildRoomField(),
+              const SizedBox(height: 16),
+              buildTeacherField(),
+              const SizedBox(height: 16),
+              buildStartTimeField(context, setState),
+              const SizedBox(height: 16),
+              buildEndTimeField(context, setState),
+              const SizedBox(height: 16),
+              buildWeekDayField(setState)
+            ]),
+          ),
+          height: 475.0,
+          width: 125.0,
+        ),
+        actions: [
+          Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
+            buildCancelButton(context),
+            buildRemoveButton(context, setState)
+          ])
+        ]);
+
 _selectStartTime(BuildContext context, StateSetter setState) async {
   final TimeOfDay timeOfDay = await showTimePicker(
     context: context,
@@ -278,6 +310,22 @@ Widget buildAcceptButton(BuildContext context, StateSetter setState) =>
               await AppSharedPreferences.getPersistentUserInfo();
           StoreProvider.of<AppState>(context).dispatch(
               addUserClass(Completer(), LectureBuilder(), userPersistentInfo));
+          Navigator.pop(context);
+          //}
+          setState(() {});
+        });
+
+Widget buildRemoveButton(BuildContext context, StateSetter setState) =>
+    TextButton(
+        child: Text('Remover'),
+        onPressed: () async {
+          //if (stopData.configuredBuses.isNotEmpty) {
+          final Tuple2<String, String> userPersistentInfo =
+              await AppSharedPreferences.getPersistentUserInfo();
+          StoreProvider.of<AppState>(context).dispatch(removeUserClass(
+              Completer(),
+              ScheduleSlotState().LectureBuilder2(),
+              userPersistentInfo));
           Navigator.pop(context);
           //}
           setState(() {});

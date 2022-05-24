@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/local_storage/app_shared_preferences.dart';
@@ -9,10 +10,17 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/redux/action_creators.dart';
 import 'package:uni/view/Widgets/row_container.dart';
+=======
+import 'package:uni/model/app_state.dart';
+import 'package:uni/model/entities/lecture.dart';
+import 'package:uni/view/Widgets/row_container.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+>>>>>>> 86f3240 (Added edit icon and trying to get the remove function to work)
 import 'package:uni/view/Widgets/schedule_add.dart';
 
-class ScheduleSlot extends StatelessWidget {
+class ScheduleSlot extends StatefulWidget {
   final String subject;
+  final int day;
   final String rooms;
   final String begin;
   final int day;
@@ -24,6 +32,7 @@ class ScheduleSlot extends StatelessWidget {
   ScheduleSlot({
     Key key,
     @required this.subject,
+    @required this.day,
     @required this.typeClass,
     @required this.rooms,
     @required this.day,
@@ -34,6 +43,11 @@ class ScheduleSlot extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ScheduleSlot> createState() => ScheduleSlotState();
+}
+
+class ScheduleSlotState extends State<ScheduleSlot> {
+  @override
   Widget build(BuildContext context) {
     return RowContainer(
         child: Container(
@@ -43,9 +57,11 @@ class ScheduleSlot extends StatelessWidget {
     ));
   }
 
-  Widget createScheduleSlotRow(context) {
+  Widget createScheduleSlotRow(
+    context,
+  ) {
     return Container(
-        key: Key('schedule-slot-time-${this.begin}-${this.end}'),
+        key: Key('schedule-slot-time-${this.widget.begin}-${this.widget.end}'),
         margin: EdgeInsets.only(top: 3.0, bottom: 3.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -57,10 +73,10 @@ class ScheduleSlot extends StatelessWidget {
 
   Widget createScheduleSlotTime(context) {
     return Column(
-      key: Key('schedule-slot-time-${this.begin}-${this.end}'),
+      key: Key('schedule-slot-time-${this.widget.begin}-${this.widget.end}'),
       children: <Widget>[
-        createScheduleTime(this.begin, context),
-        createScheduleTime(this.end, context)
+        createScheduleTime(this.widget.begin, context),
+        createScheduleTime(this.widget.end, context)
       ],
     );
   }
@@ -72,15 +88,15 @@ class ScheduleSlot extends StatelessWidget {
 
   List<Widget> createScheduleSlotPrimInfo(context) {
     final subjectTextField = createTextField(
-        this.subject,
+        this.widget.subject,
         Theme.of(context).textTheme.headline3.apply(fontSizeDelta: 5),
         TextAlign.center);
     final typeClassTextField = createTextField(
-        ' (' + this.typeClass + ')',
+        ' (' + this.widget.typeClass + ')',
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.center);
     final roomTextField = createTextField(
-        this.rooms,
+        this.widget.rooms,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.right);
     return [
@@ -151,14 +167,15 @@ class ScheduleSlot extends StatelessWidget {
 
   Widget createScheduleSlotTeacherInfo(context) {
     return createTextField(
-        this.teacher,
+        this.widget.teacher,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.center);
   }
 
   Widget createScheduleSlotClass(context) {
-    final classText =
-        this.classNumber != null ? (' | ' + this.classNumber) : '';
+    final classText = this.widget.classNumber != null
+        ? (' | ' + this.widget.classNumber)
+        : '';
     return createTextField(
         classText,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
@@ -184,6 +201,7 @@ class ScheduleSlot extends StatelessWidget {
     return (result == null) ? false : result;
   }
 
+<<<<<<< HEAD
   Widget buildRemoveButton(BuildContext context, StateSetter setState) =>
       TextButton(
           child: Text('Remover'),
@@ -213,6 +231,21 @@ class ScheduleSlot extends StatelessWidget {
       int.parse(this.begin.substring(3, 5)),
       int.parse(this.end.substring(0, 2)),
       int.parse(this.end.substring(3, 5)),
+=======
+  Lecture LectureBuilder2() {
+    return Lecture(
+      this.widget.subject,
+      this.widget.typeClass,
+      this.widget.day,
+      1,
+      this.widget.rooms,
+      this.widget.teacher,
+      this.widget.classNumber,
+      int.parse(this.widget.begin.substring(0, 2)),
+      int.parse(this.widget.begin.substring(4, 6)),
+      int.parse(this.widget.end.substring(0, 2)),
+      int.parse(this.widget.end.substring(4, 6)),
+>>>>>>> 86f3240 (Added edit icon and trying to get the remove function to work)
     );
   }
 }
