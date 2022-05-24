@@ -5,7 +5,7 @@ import 'package:uni/view/Widgets/page_title.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
 import 'package:uni/view/Widgets/schedule_slot.dart';
 import 'package:uni/view/Widgets/schedule_top_bar.dart';
-import 'package:uni/view/Widgets/schedule_add_button.dart';
+import 'package:uni/view/Widgets/schedule_add.dart';
 
 /// Manages the 'schedule' sections of the app
 class SchedulePageView extends StatelessWidget {
@@ -46,7 +46,7 @@ class SchedulePageView extends StatelessWidget {
         children: createSchedule(context),
       )),
       Expanded(
-        child: ScheduleAddButton(),
+        child: ScheduleAdd(),
       )
     ]);
   }
