@@ -65,6 +65,7 @@ Widget createActionButton(BuildContext context) => SpeedDial(
       shape: CircleBorder(),
       children: [
         SpeedDialChild(
+            key: Key('UC'),
             child: Icon(Icons.work),
             foregroundColor: Colors.white,
             backgroundColor: Color(0xFF35424a),
@@ -75,6 +76,7 @@ Widget createActionButton(BuildContext context) => SpeedDial(
                     builder: (context, StateSetter setState) =>
                         getUCMenu(context, setState)))),
         SpeedDialChild(
+            key: Key('ExC'),
             child: Icon(Icons.rowing),
             foregroundColor: Colors.white,
             backgroundColor: Color(0xFF35424a),
@@ -176,6 +178,7 @@ _selectEndTime(BuildContext context, StateSetter setState) async {
 }
 
 Widget buildSubjectField() => TextFormField(
+      key: Key('subject field'),
       style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
       decoration: InputDecoration(
         labelText: 'Subject',
@@ -185,6 +188,7 @@ Widget buildSubjectField() => TextFormField(
     );
 
 Widget buildTypeClassField() => TextFormField(
+      key: Key('type field'),
       style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
       decoration: InputDecoration(
         labelText: 'Class',
@@ -194,6 +198,7 @@ Widget buildTypeClassField() => TextFormField(
     );
 
 Widget buildRoomField() => TextFormField(
+      key: Key('room field'),
       style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
       decoration: InputDecoration(
         labelText: 'Room',
@@ -203,6 +208,7 @@ Widget buildRoomField() => TextFormField(
     );
 
 Widget buildTeacherField() => TextFormField(
+      key: Key('teacher field'),
       style: TextStyle(fontSize: 15.0, height: 1, color: Colors.black),
       decoration: InputDecoration(
         labelText: 'Teacher',
@@ -215,6 +221,7 @@ Widget buildStartTimeField(BuildContext context, StateSetter setState) =>
     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
       Text('Hora de Início: '),
       ElevatedButton(
+        key: Key('start time field'),
         onPressed: () {
           _selectStartTime(context, setState);
         },
@@ -226,6 +233,7 @@ Widget buildEndTimeField(BuildContext context, StateSetter setState) =>
     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
       Text('Hora de Fim: '),
       ElevatedButton(
+        key: Key('end time field'),
         onPressed: () {
           _selectEndTime(context, setState);
         },
@@ -234,6 +242,7 @@ Widget buildEndTimeField(BuildContext context, StateSetter setState) =>
     ]);
 
 Widget buildWeekDayField(StateSetter setState) => WeekdaySelector(
+      key: Key('day field'),
       selectedFillColor: Color.fromARGB(255, 0x75, 0x17, 0x1e),
       shortWeekdays: ['D', '2ª', '3ª', '4ª', '5ª', '6ª', 'S'],
       firstDayOfWeek: DateTime.sunday,
@@ -254,10 +263,13 @@ Widget buildWeekDayField(StateSetter setState) => WeekdaySelector(
     );
 
 Widget buildCancelButton(BuildContext context) => TextButton(
-    child: Text('Cancelar'), onPressed: () => Navigator.pop(context));
+    key: Key('cancel'),
+    child: Text('Cancelar'),
+    onPressed: () => Navigator.pop(context));
 
 Widget buildAcceptButton(BuildContext context, StateSetter setState) =>
     TextButton(
+        key: Key('accept'),
         child: Text('Adicionar'),
         onPressed: () async {
           //if (stopData.configuredBuses.isNotEmpty) {
