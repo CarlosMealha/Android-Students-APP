@@ -32,7 +32,7 @@ class SchedulePageView extends StatelessWidget {
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         children: <Widget>[
-          ScheduleTopBar(),
+          ScheduleTopBar(aggLectures:aggLectures),
           TabBar(
             controller: tabController,
             isScrollable: true,
