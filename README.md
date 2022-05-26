@@ -18,7 +18,7 @@ You can find here detailed about the product (or mini-app or module), from a hig
 * [Implementation]
 * [Test]
 * [Configuration and change management]
-* [Project management] https://github.com/LEIC-ES-2021-22/2LEIC07T3/blob/main/docs/ProjectManagement.md
+* [Project management](https://github.com/LEIC-ES-2021-22/2LEIC07T3/blob/main/docs/ProjectManagement.md)
 
 Thank you!
 
