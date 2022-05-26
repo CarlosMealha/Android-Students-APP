@@ -93,7 +93,7 @@ class SchedulePageView extends StatelessWidget {
   Widget Function(dynamic daycontent, BuildContext context) dayColumnBuilder(
       int day) {
     Widget createDayColumn(dayContent, BuildContext context) {
-      return Container(
+      return SingleChildScrollView(
           key: Key('schedule-page-day-column-$day'),
           child: Column(
             mainAxisSize: MainAxisSize.min,
