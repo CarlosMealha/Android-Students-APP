@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/local_storage/app_shared_preferences.dart';
@@ -11,28 +9,13 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/redux/action_creators.dart';
 import 'package:uni/view/Widgets/row_container.dart';
-=======
-=======
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:tuple/tuple.dart';
-import 'package:uni/controller/local_storage/app_shared_preferences.dart';
->>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
-import 'package:uni/model/app_state.dart';
-import 'package:uni/model/entities/lecture.dart';
-import 'package:uni/redux/action_creators.dart';
-import 'package:uni/view/Widgets/row_container.dart';
-<<<<<<< HEAD
-import 'package:flutter_redux/flutter_redux.dart';
->>>>>>> 86f3240 (Added edit icon and trying to get the remove function to work)
-=======
->>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
 import 'package:uni/view/Widgets/schedule_add.dart';
 
 class ScheduleSlot extends StatelessWidget {
   final String subject;
+  final int day;
   final String rooms;
   final String begin;
-  final int day;
   final String end;
   final String teacher;
   final String typeClass;
@@ -41,9 +24,9 @@ class ScheduleSlot extends StatelessWidget {
   ScheduleSlot({
     Key key,
     @required this.subject,
+    @required this.day,
     @required this.typeClass,
     @required this.rooms,
-    @required this.day,
     @required this.begin,
     @required this.end,
     this.teacher,
@@ -60,7 +43,9 @@ class ScheduleSlot extends StatelessWidget {
     ));
   }
 
-  Widget createScheduleSlotRow(context) {
+  Widget createScheduleSlotRow(
+    context,
+  ) {
     return Container(
         key: Key('schedule-slot-time-${this.begin}-${this.end}'),
         margin: EdgeInsets.only(top: 3.0, bottom: 3.0),
@@ -201,10 +186,6 @@ class ScheduleSlot extends StatelessWidget {
     return (result == null) ? false : result;
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
   Widget buildRemoveButton(BuildContext context, StateSetter setState) =>
       TextButton(
           child: Text('Remover'),
@@ -222,7 +203,6 @@ class ScheduleSlot extends StatelessWidget {
           });
 
   Future<Lecture> LectureBuilder2(context) async {
-<<<<<<< HEAD
     return Lecture(
       this.subject,
       this.typeClass,
@@ -235,33 +215,6 @@ class ScheduleSlot extends StatelessWidget {
       int.parse(this.begin.substring(3, 5)),
       int.parse(this.end.substring(0, 2)),
       int.parse(this.end.substring(3, 5)),
-=======
-  Lecture LectureBuilder2() {
-=======
->>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
-    return Lecture(
-      this.subject,
-      this.typeClass,
-      this.day,
-      1,
-<<<<<<< HEAD
-      this.widget.rooms,
-      this.widget.teacher,
-      this.widget.classNumber,
-      int.parse(this.widget.begin.substring(0, 2)),
-      int.parse(this.widget.begin.substring(4, 6)),
-      int.parse(this.widget.end.substring(0, 2)),
-      int.parse(this.widget.end.substring(4, 6)),
->>>>>>> 86f3240 (Added edit icon and trying to get the remove function to work)
-=======
-      this.rooms,
-      this.teacher,
-      this.classNumber,
-      int.parse(this.begin.substring(0, 2)),
-      int.parse(this.begin.substring(3, 5)),
-      int.parse(this.end.substring(0, 2)),
-      int.parse(this.end.substring(3, 5)),
->>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
     );
   }
 }
