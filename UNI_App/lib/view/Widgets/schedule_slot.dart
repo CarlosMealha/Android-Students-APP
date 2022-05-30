@@ -10,12 +10,13 @@ import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/redux/action_creators.dart';
 import 'package:uni/view/Widgets/row_container.dart';
 import 'package:uni/view/Widgets/schedule_add.dart';
+import 'package:uni/view/Widgets/schedule_add.dart';
 
 class ScheduleSlot extends StatelessWidget {
   final String subject;
+  final int day;
   final String rooms;
   final String begin;
-  final int day;
   final String end;
   final String teacher;
   final String typeClass;
@@ -24,9 +25,9 @@ class ScheduleSlot extends StatelessWidget {
   ScheduleSlot({
     Key key,
     @required this.subject,
+    @required this.day,
     @required this.typeClass,
     @required this.rooms,
-    @required this.day,
     @required this.begin,
     @required this.end,
     this.teacher,
@@ -43,7 +44,9 @@ class ScheduleSlot extends StatelessWidget {
     ));
   }
 
-  Widget createScheduleSlotRow(context) {
+  Widget createScheduleSlotRow(
+    context,
+  ) {
     return Container(
         key: Key('schedule-slot-time-${this.begin}-${this.end}'),
         margin: EdgeInsets.only(top: 3.0, bottom: 3.0),
