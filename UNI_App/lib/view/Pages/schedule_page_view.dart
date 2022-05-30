@@ -80,6 +80,7 @@ class SchedulePageView extends StatelessWidget {
       scheduleContent.add(ScheduleSlot(
         subject: lecture.subject,
         typeClass: lecture.typeClass,
+        day: lecture.day,
         rooms: lecture.room,
         begin: lecture.startTime,
         end: lecture.endTime,
