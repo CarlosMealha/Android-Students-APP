@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/local_storage/app_shared_preferences.dart';
@@ -11,16 +12,24 @@ import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/redux/action_creators.dart';
 import 'package:uni/view/Widgets/row_container.dart';
 =======
+=======
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:tuple/tuple.dart';
+import 'package:uni/controller/local_storage/app_shared_preferences.dart';
+>>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
 import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/lecture.dart';
+import 'package:uni/redux/action_creators.dart';
 import 'package:uni/view/Widgets/row_container.dart';
+<<<<<<< HEAD
 import 'package:flutter_redux/flutter_redux.dart';
 >>>>>>> 86f3240 (Added edit icon and trying to get the remove function to work)
+=======
+>>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
 import 'package:uni/view/Widgets/schedule_add.dart';
 
-class ScheduleSlot extends StatefulWidget {
+class ScheduleSlot extends StatelessWidget {
   final String subject;
-  final int day;
   final String rooms;
   final String begin;
   final int day;
@@ -32,7 +41,6 @@ class ScheduleSlot extends StatefulWidget {
   ScheduleSlot({
     Key key,
     @required this.subject,
-    @required this.day,
     @required this.typeClass,
     @required this.rooms,
     @required this.day,
@@ -43,11 +51,6 @@ class ScheduleSlot extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ScheduleSlot> createState() => ScheduleSlotState();
-}
-
-class ScheduleSlotState extends State<ScheduleSlot> {
-  @override
   Widget build(BuildContext context) {
     return RowContainer(
         child: Container(
@@ -57,11 +60,9 @@ class ScheduleSlotState extends State<ScheduleSlot> {
     ));
   }
 
-  Widget createScheduleSlotRow(
-    context,
-  ) {
+  Widget createScheduleSlotRow(context) {
     return Container(
-        key: Key('schedule-slot-time-${this.widget.begin}-${this.widget.end}'),
+        key: Key('schedule-slot-time-${this.begin}-${this.end}'),
         margin: EdgeInsets.only(top: 3.0, bottom: 3.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -73,10 +74,10 @@ class ScheduleSlotState extends State<ScheduleSlot> {
 
   Widget createScheduleSlotTime(context) {
     return Column(
-      key: Key('schedule-slot-time-${this.widget.begin}-${this.widget.end}'),
+      key: Key('schedule-slot-time-${this.begin}-${this.end}'),
       children: <Widget>[
-        createScheduleTime(this.widget.begin, context),
-        createScheduleTime(this.widget.end, context)
+        createScheduleTime(this.begin, context),
+        createScheduleTime(this.end, context)
       ],
     );
   }
@@ -88,15 +89,15 @@ class ScheduleSlotState extends State<ScheduleSlot> {
 
   List<Widget> createScheduleSlotPrimInfo(context) {
     final subjectTextField = createTextField(
-        this.widget.subject,
+        this.subject,
         Theme.of(context).textTheme.headline3.apply(fontSizeDelta: 5),
         TextAlign.center);
     final typeClassTextField = createTextField(
-        ' (' + this.widget.typeClass + ')',
+        ' (' + this.typeClass + ')',
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.center);
     final roomTextField = createTextField(
-        this.widget.rooms,
+        this.rooms,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.right);
     return [
@@ -167,15 +168,14 @@ class ScheduleSlotState extends State<ScheduleSlot> {
 
   Widget createScheduleSlotTeacherInfo(context) {
     return createTextField(
-        this.widget.teacher,
+        this.teacher,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
         TextAlign.center);
   }
 
   Widget createScheduleSlotClass(context) {
-    final classText = this.widget.classNumber != null
-        ? (' | ' + this.widget.classNumber)
-        : '';
+    final classText =
+        this.classNumber != null ? (' | ' + this.classNumber) : '';
     return createTextField(
         classText,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -4),
@@ -202,6 +202,9 @@ class ScheduleSlotState extends State<ScheduleSlot> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
   Widget buildRemoveButton(BuildContext context, StateSetter setState) =>
       TextButton(
           child: Text('Remover'),
@@ -219,6 +222,7 @@ class ScheduleSlotState extends State<ScheduleSlot> {
           });
 
   Future<Lecture> LectureBuilder2(context) async {
+<<<<<<< HEAD
     return Lecture(
       this.subject,
       this.typeClass,
@@ -233,11 +237,14 @@ class ScheduleSlotState extends State<ScheduleSlot> {
       int.parse(this.end.substring(3, 5)),
 =======
   Lecture LectureBuilder2() {
+=======
+>>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
     return Lecture(
-      this.widget.subject,
-      this.widget.typeClass,
-      this.widget.day,
+      this.subject,
+      this.typeClass,
+      this.day,
       1,
+<<<<<<< HEAD
       this.widget.rooms,
       this.widget.teacher,
       this.widget.classNumber,
@@ -246,6 +253,15 @@ class ScheduleSlotState extends State<ScheduleSlot> {
       int.parse(this.widget.end.substring(0, 2)),
       int.parse(this.widget.end.substring(4, 6)),
 >>>>>>> 86f3240 (Added edit icon and trying to get the remove function to work)
+=======
+      this.rooms,
+      this.teacher,
+      this.classNumber,
+      int.parse(this.begin.substring(0, 2)),
+      int.parse(this.begin.substring(3, 5)),
+      int.parse(this.end.substring(0, 2)),
+      int.parse(this.end.substring(3, 5)),
+>>>>>>> 4d83b1c (Fixed bug on adding classes and made removing classes work)
     );
   }
 }
