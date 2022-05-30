@@ -262,7 +262,6 @@ ThunkAction<AppState> getUserSchedule(
   return (Store<AppState> store) async {
     try {
       store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
-
       List<Lecture> lectures =
           await getLecturesFromFetcherOrElse(fetcher, store);
 
