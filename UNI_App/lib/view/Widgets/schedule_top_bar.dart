@@ -92,7 +92,7 @@ class ScheduleTopBar extends StatelessWidget {
     List<List<String>> rows = List();
     rows.add(['Subject', 'Day', 'Start', 'End']);
 
-    for (var i = 1; i < aggLectures.length; i++) {
+    for (var i = 0; i < aggLectures.length; i++) {
       for(var j = 0; j < aggLectures[i].length; j++){    
         List<String> row = new List();
         final sub = aggLectures[i][j].subject;
