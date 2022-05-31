@@ -8,7 +8,6 @@ import 'package:flutter/foundation.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:csv/csv.dart';
 import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
@@ -147,7 +146,6 @@ class ScheduleTopBar extends StatelessWidget {
     }
     
     String csv = const ListToCsvConverter().convert(rows);
-    final directory = await getApplicationDocumentsDirectory();
     final pathOfTheFileToWrite = selectedDirectory + "/myCsvFile.csv";
     File file = await File(pathOfTheFileToWrite);
     file.writeAsString(csv);
