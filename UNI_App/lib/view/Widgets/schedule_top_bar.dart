@@ -11,6 +11,8 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:file_picker/file_picker.dart';
+
 
 class ScheduleTopBar extends StatelessWidget {
   ScheduleTopBar(
@@ -84,6 +86,13 @@ class ScheduleTopBar extends StatelessWidget {
   }
 
   exportToCSV() async{
+    print('---STARTED---');
+    String selectedDirectory = await FilePicker.platform.getDirectoryPath();
+
+    if (selectedDirectory == null) {
+      return;
+    }
+    print('--------> Selected Directory Path:  $selectedDirectory');
     List<List<String>> rows = List();
     rows.add(['Subject', 'Day', 'Start', 'End']);
 
@@ -154,7 +163,7 @@ class ScheduleTopBar extends StatelessWidget {
     
     String csv = const ListToCsvConverter().convert(rows);
     final directory = await getApplicationDocumentsDirectory();
-    final pathOfTheFileToWrite = directory.path + "/myCsvFile.csv";
+    final pathOfTheFileToWrite = selectedDirectory + "/myCsvFile.csv";
     File file = await File(pathOfTheFileToWrite);
     file.writeAsString(csv);
   }
