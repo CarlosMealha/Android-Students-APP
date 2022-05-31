@@ -86,13 +86,10 @@ class ScheduleTopBar extends StatelessWidget {
   }
 
   exportToCSV() async{
-    print('---STARTED---');
     String selectedDirectory = await FilePicker.platform.getDirectoryPath();
-
     if (selectedDirectory == null) {
       return;
     }
-    print('--------> Selected Directory Path:  $selectedDirectory');
     List<List<String>> rows = List();
     rows.add(['Subject', 'Day', 'Start', 'End']);
 
@@ -145,18 +142,6 @@ class ScheduleTopBar extends StatelessWidget {
 
         row.add(start);
         row.add(end);
-
-        print('------------ Schedule #$i,#$j ------------');
-        print('Sub:$sub');
-        print('Start:$start');
-        print('End:$end');
-        print('Type:$type');
-        print('Room:$room');
-        print('Teacher:$teacher');
-        print('Class Number:$classNumber');
-        print('Day:$day');
-        print('Blocks:$blocks');
-        print('Start Seconds:$startSeconds');
         rows.add(row);
       }
     }
