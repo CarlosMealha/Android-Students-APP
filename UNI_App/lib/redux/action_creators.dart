@@ -302,7 +302,7 @@ ThunkAction<AppState> addUserClass(Completer<Null> action, Lecture lec,
     store.dispatch(SetScheduleAction(lecs));
     updateStateBasedOnLocalUserLectures();
 
-    //db.saveNewLectures(lecs);
+    db.saveNewLectures(lecs);
     //db.addLectures(lecs);
   };
 }
