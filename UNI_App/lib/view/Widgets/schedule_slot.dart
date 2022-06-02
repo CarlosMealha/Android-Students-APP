@@ -14,6 +14,7 @@ import 'package:uni/view/Widgets/schedule_add.dart';
 class ScheduleSlot extends StatelessWidget {
   final String subject;
   final int day;
+  final int blocks;
   final String rooms;
   final String begin;
   final String end;
@@ -27,6 +28,7 @@ class ScheduleSlot extends StatelessWidget {
     @required this.day,
     @required this.typeClass,
     @required this.rooms,
+    @required this.blocks,
     @required this.begin,
     @required this.end,
     this.teacher,
@@ -207,7 +209,7 @@ class ScheduleSlot extends StatelessWidget {
       this.subject,
       this.typeClass,
       this.day,
-      1,
+      this.blocks,
       this.rooms,
       this.teacher,
       this.classNumber,
