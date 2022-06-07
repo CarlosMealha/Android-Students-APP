@@ -29,10 +29,6 @@ class AppLecturesDatabase extends AppDatabase {
     await _insertLectures(lecs);
   }
 
-  addLectures(List<Lecture> lecs) async {
-    await _insertLectures(lecs);
-  }
-
   /// Returns a list containing all of the lectures stored in this database.
   Future<List<Lecture>> lectures() async {
     // Get a reference to the database

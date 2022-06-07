@@ -80,6 +80,8 @@ class SchedulePageView extends StatelessWidget {
       scheduleContent.add(ScheduleSlot(
         subject: lecture.subject,
         typeClass: lecture.typeClass,
+        blocks: lecture.blocks,
+        day: lecture.day,
         rooms: lecture.room,
         begin: lecture.startTime,
         end: lecture.endTime,
@@ -93,7 +95,7 @@ class SchedulePageView extends StatelessWidget {
   Widget Function(dynamic daycontent, BuildContext context) dayColumnBuilder(
       int day) {
     Widget createDayColumn(dayContent, BuildContext context) {
-      return Container(
+      return SingleChildScrollView(
           key: Key('schedule-page-day-column-$day'),
           child: Column(
             mainAxisSize: MainAxisSize.min,

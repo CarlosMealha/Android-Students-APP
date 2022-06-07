@@ -262,13 +262,12 @@ ThunkAction<AppState> getUserSchedule(
   return (Store<AppState> store) async {
     try {
       store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
-
       List<Lecture> lectures =
           await getLecturesFromFetcherOrElse(fetcher, store);
 
       // Updates local database according to the information fetched -- Lectures
       if (userPersistentInfo.item1 != '' && userPersistentInfo.item2 != '') {
-        lectures = store.state.content['schedule'];
+        //lectures = store.state.content['schedule'];
         final AppLecturesDatabase db = AppLecturesDatabase();
         db.saveNewLectures(lectures);
       }
@@ -284,12 +283,12 @@ ThunkAction<AppState> getUserSchedule(
 }
 
 ThunkAction<AppState> addUserClass(Completer<Null> action, Lecture lec,
-    Tuple2<String, String> userPersistentInfo,
-    {ScheduleFetcher fetcher}) {
-  return (Store<AppState> store) {
+    Tuple2<String, String> userPersistentInfo) {
+  return (Store<AppState> store) async {
     store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
     //store.dispatch(SetUser(RequestStatus.busy));
-    final List<Lecture> lecs = store.state.content['schedule'];
+    final AppLecturesDatabase db = AppLecturesDatabase();
+    final List<Lecture> lecs = await db.lectures();
 
     //if (stops.containsKey(stopCode)) {
     //  (stops[stopCode].configuredBuses).clear();
@@ -301,11 +300,26 @@ ThunkAction<AppState> addUserClass(Completer<Null> action, Lecture lec,
 
     //store.dispatch(SetBusStopsAction(stops));
     store.dispatch(SetScheduleAction(lecs));
-    store.dispatch(getUserSchedule(action, userPersistentInfo));
+    updateStateBasedOnLocalUserLectures();
 
-    final AppLecturesDatabase db = AppLecturesDatabase();
-    //db.saveNewLectures(lecs);
+    db.saveNewLectures(lecs);
     //db.addLectures(lecs);
+  };
+}
+
+ThunkAction<AppState> removeUserClass(Completer<Null> action, Lecture lec,
+    Tuple2<String, String> userPersistentInfo) {
+  return (Store<AppState> store) async {
+    store.dispatch(SetScheduleStatusAction(RequestStatus.busy));
+    final AppLecturesDatabase db = AppLecturesDatabase();
+    final List<Lecture> lectures = await db.lectures();
+    lectures.remove(lec);
+
+    store.dispatch(SetScheduleAction(lectures));
+    updateStateBasedOnLocalUserLectures();
+
+    //final AppLecturesDatabase db = AppLecturesDatabase();
+    db.saveNewLectures(lectures);
   };
 }
 

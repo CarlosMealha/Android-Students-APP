@@ -15,6 +15,7 @@ import 'package:uni/view/theme.dart';
 import 'package:weekday_selector/weekday_selector.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:uni/controller/local_storage/app_lectures_database.dart';
+import 'package:uni/view/Widgets/schedule_slot.dart';
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -290,9 +291,6 @@ Lecture LectureBuilder() {
 
   for (int i = 0; i < 7; i++) {
     if (values[i]) {
-      Lecture l = Lecture(subject, 'TP', i - 1, 1, room, teacher, classNumber,
-          startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes);
-      print(l.subject);
       return (Lecture(subject, 'TP', i - 1, 1, room, teacher, classNumber,
           startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes));
     }
